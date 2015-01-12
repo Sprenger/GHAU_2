@@ -122,3 +122,6 @@ C:\Users\Sprenger\Documents\ghau_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPre
 C:\Users\Sprenger\Documents\ghau_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.exe
 C:\Users\Sprenger\Documents\ghau_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.xml
 C:\Users\Sprenger\Documents\ghau_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.pdb
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.exe
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.xml
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.pdb

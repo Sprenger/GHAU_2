@@ -35,10 +35,10 @@
                             '************ valida fecha no invertida *************
                             Dim f As Date = dato.Rows(i).Item(5)
                             Dim f1 = f.ToString("yyyy/MM/dd")
-                            Dim ff = Replace(f1, "/", "")
+                            Dim ff = Replace(Replace(f1, "/", ""), "-", "")
                             Dim h As Date = dato.Rows(i).Item(6)
                             Dim h1 = h.ToString("yyyy/MM/dd")
-                            Dim hh = Replace(h1, "/", "")
+                            Dim hh = Replace(Replace(h1, "/", ""), "-", "")
                             '****************************************************
                             If CInt(ff) <= CInt(hh) Then
 
