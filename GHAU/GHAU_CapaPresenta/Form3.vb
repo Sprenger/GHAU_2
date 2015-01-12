@@ -16,32 +16,12 @@ Public Class Form3
     Public dtnodosSalas As DataTable = dthorario.salass("VM")
     Public dtprogramas As DataTable = dthorario.consultarprogramas
     Public dtunidaesAcademicas As DataTable = dthorario.consultarunidadesacademicas
-
-
+    Public Dt_eventos As DataTable
+    Public dtevento As DataTable
     Private Sub Form3_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        'Dim nodos As New GHAU_CapaNegocio.Negocio
-
-        Dim MyView As DataView = New DataView(dtnodosSalas)
-        Dim dtSinDuplicados As DataTable
-        dtSinDuplicados = MyView.ToTable(True, dtnodosSalas.Columns(3).ColumnName.ToString, dtnodosSalas.Columns(1).ColumnName.ToString)
-        TV_FiltroSala.Nodes.Add("TODAS LAS SALAS")
-        TV_FiltroSala.Nodes(0).Nodes.Add("Salas")
-        TV_FiltroSala.Nodes(0).Nodes.Add("Otros")
-        For J = 0 To dtSinDuplicados.Rows.Count - 1
-            Dim encontrar = dtSinDuplicados.Rows(J).Item(1)
-            If InStr(Replace(encontrar.ToString.ToUpper, " ", ""), "SAL") > 0 Then
-                TV_FiltroSala.Nodes(0).Nodes(0).Nodes.Add(encontrar.ToString.ToUpper)
-            Else
-                TV_FiltroSala.Nodes(0).Nodes(1).Nodes.Add(encontrar.ToString.ToUpper)
-            End If
-        Next
-        'GRILLA_MOSTRAR.DataSource = grilla_horario
-        cargar(Mid(FormatDateTime(Mes.SelectionStart, DateFormat.LongDate), 1, 2).ToUpper)
-
-
-        
+        cargar_form3()
     End Sub
+
     Dim DIASELECCIONADO As String
     Dim dtGrilla As DataTable
     Sub cargar(ByVal dia As String)
@@ -49,7 +29,6 @@ Public Class Form3
             Dim dtfijo As DataTable = grilla_horario.Copy
             Dim dt = datatable.horario(dia, FormatDateTime(Mes.SelectionStart, DateFormat.ShortDate))
             dtGrilla = datatable.MaatchHorario(dtfijo, dt)
-
             GRILLA_MOSTRAR.DataSource = dtGrilla.Copy
             GRILLA_MOSTRAR.Columns(0).Frozen = True
             GRILLA_MOSTRAR.Columns(1).Frozen = True
@@ -62,25 +41,14 @@ Public Class Form3
                         GRILLA_MOSTRAR.Rows(i).Cells(j).Value = DATOS(0) 'Replace(GRILLA_MOSTRAR.Rows(i).Cells(j).Value, "/", vbNewLine)
 
                     End If
-                    'If j > 2 And i = 0 Then
-                    '    Dim columna = Split(GRILLA_MOSTRAR.Columns(j).HeaderText.ToUpper, vbNewLine)
-                    '    GRILLA_MOSTRAR.Columns(j).HeaderText = columna(0) & vbNewLine & columna(1)
-                    '    'GRILLA_MOSTRAR.Columns(j).ToolTipText = columna(2)
-                    'End If
-                    ''GRILLA_MOSTRAR.Columns(j).HeaderText=
                     GRILLA_MOSTRAR.ColumnHeadersHeight = 55
-
                 Next
                 GRILLA_MOSTRAR.Rows(i).Height = 23
             Next
-            ' GRILLA_MOSTRAR.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders
-            'DataGridViewAutoSizeColumnsMode.Fill()
-            'Me.GRILLA_MOSTRAR.DefaultCellStyle.WrapMode = DataGridViewTriState.True
             DIASELECCIONADO = dia
         End If
 
     End Sub
-
 
     Dim checkednodes As New List(Of TreeNode)()
 
@@ -163,15 +131,12 @@ Public Class Form3
                             Exit For
                         End If
                     Next
-                    'Dim codo = tn.Text
-                    'MessageBox.Show(tn.Text)
                 End If
-                'Ahora hago verificacion a los hijos del nodo actual            
-                'Esta iteración no acabara hasta llegar al ultimo nodo principal
+
                 RecorrerNodos(tn)
             Next
         Catch ex As Exception
-            ' MessageBox.Show(ex.ToString())
+
         End Try
     End Sub
 
@@ -231,21 +196,9 @@ Public Class Form3
         End If
 
     End Sub
-   
+
     Private Sub BTN_Exportar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_Exportar.Click
-        Dim dt As DataTable = grilla_horario.Copy
-        For j = 2 To GRILLA_MOSTRAR.Columns.Count - 1
-            ' dt.Columns.Add(GRILLA_MOSTRAR.Columns(j).HeaderText, Type.GetType("System.String"))
-            For i = 0 To GRILLA_MOSTRAR.Rows.Count - 1
-                If GRILLA_MOSTRAR.Rows(i).Cells(j).ToString <> "" Then
-                    dt.Rows(i).Item(j) = Replace(GRILLA_MOSTRAR.Rows(i).Cells(j).ToolTipText, vbNewLine, "++")
-                End If
-
-
-            Next
-        Next
-        Dim exportar As New GHAU_CapaNegocio.Excel
-        exportar.Exportar(dt, FormatDateTime(Me.Mes.SelectionStart, DateFormat.LongDate))
+        TransformarGrilla(GRILLA_MOSTRAR, grilla_horario, FormatDateTime(Me.Mes.SelectionStart, DateFormat.LongDate))
     End Sub
 
     Private Sub Mes_DateSelected(ByVal sender As Object, ByVal e As System.Windows.Forms.DateRangeEventArgs) Handles Mes.DateSelected
@@ -254,6 +207,33 @@ Public Class Form3
         GRILLA_MOSTRAR.Focus()
     End Sub
 
+
+    Private Sub TransformarGrilla(ByVal grilla_mostrar As DataGridView, ByVal grilla_horario As DataTable, ByVal dia As String)
+        Dim dt As New DataTable
+        Dim contador As Integer = 0
+        For j = 0 To grilla_mostrar.Columns.Count - 1
+            If grilla_mostrar.Columns(j).Visible = True Then
+                dt.Columns.Add(grilla_mostrar.Columns(j).Name, Type.GetType("System.String"))
+                For i = 0 To grilla_mostrar.RowCount - 1
+                    If j = 0 Then
+                        dt.Rows.Add()
+                    End If
+                    If grilla_mostrar.Rows(i).Cells(j).ToolTipText <> "" Then
+                        dt.Rows(i).Item(j - contador) = Replace(grilla_mostrar.Rows(i).Cells(j).ToolTipText, vbNewLine, "++")
+                    Else
+                        dt.Rows(i).Item(j - contador) = grilla_mostrar.Rows(i).Cells(j).Value.ToString
+                    End If
+
+
+                Next
+            Else
+                contador = contador + 1
+            End If
+        Next
+
+        Dim exportar As New GHAU_CapaNegocio.Excel
+        exportar.Exportar(dt, dia) 'FormatDateTime(Me.Mes.SelectionStart, DateFormat.LongDate)
+    End Sub
 
 
     Private Sub BTN_sala_Fija_fondo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_sala_Fija_fondo.Click
@@ -315,7 +295,6 @@ Public Class Form3
     End Sub
     Private Sub BTN_sala_fondo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_sala_Evento_fondo.Click
         If color.ShowDialog <> Windows.Forms.DialogResult.Cancel Then
-
             For i = 0 To GRILLA_MOSTRAR.Rows.Count - 1
                 For j = 3 To GRILLA_MOSTRAR.Columns.Count - 1
                     If GRILLA_MOSTRAR.Rows(i).Cells(j).Value.ToString.ToUpper <> "" Then
@@ -325,63 +304,41 @@ Public Class Form3
                         End If
                     End If
                 Next
-
             Next
-
         End If
-    End Sub
-
-    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        MODIFICARBETAvb.Show()
-
-    End Sub
-
-    Private Sub ToolStrip1_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles ToolStrip1.ItemClicked
-
     End Sub
 
     '+++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    Private Sub Grilla_Horarios_CellMouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles GRILLA_MOSTRAR.CellMouseDown
-        '     xinicio = e.RowIndex.ToString
-        yinicio = e.ColumnIndex.ToString
-        If e.Button <> Windows.Forms.MouseButtons.Right Then
-            ' yinicio = 0
-            xfin = 0
-            xinicio = 0
-            If e.ColumnIndex >= 4 And e.RowIndex >= 0 Then
-
-                xinicio = e.RowIndex.ToString
-                yinicio = e.ColumnIndex.ToString
-                ' xxx.Text = xinicio
-            Else
-
-                GRILLA_MOSTRAR.ClearSelection()
-            End If
-        End If
+    Private Sub Grilla_Horarios_CellMouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) _
+    Handles GRILLA_MOSTRAR.CellMouseDown
+        grilla_mouse_down(e)
     End Sub
-    Private Sub Grilla_Horarios_CellMouseUp(ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs) Handles GRILLA_MOSTRAR.CellMouseUp
-        If e.Button <> Windows.Forms.MouseButtons.Right Then
-            yfin = e.ColumnIndex
-
-            If e.ColumnIndex >= 2 And e.RowIndex >= 0 And yinicio = e.ColumnIndex Then
-
-                xfin = e.RowIndex
-                yfin = e.ColumnIndex
-                ' xxxxxx.Text = xfin
-            Else
-
-                GRILLA_MOSTRAR.ClearSelection()
-            End If
-        End If
+    Private Sub Grilla_Horarios_CellMouseUp(ByVal sender As Object, ByVal e As DataGridViewCellMouseEventArgs) _
+    Handles GRILLA_MOSTRAR.CellMouseUp
+        grilla_mouse_up(e)
     End Sub
-
-
-
-
 
 
     Private Sub Grilla_Horarios_MouseUp(ByVal sender As Object, ByVal e As MouseEventArgs) Handles GRILLA_MOSTRAR.MouseUp
+        menucontextual(e)
+    End Sub
+
+    Private Sub grilla_mouse_down(ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs)
+        yinicio = e.ColumnIndex.ToString
+        If e.Button <> Windows.Forms.MouseButtons.Right Then
+            xfin = 0
+            xinicio = 0
+            If e.ColumnIndex >= 4 And e.RowIndex >= 0 Then
+                xinicio = e.RowIndex.ToString
+                yinicio = e.ColumnIndex.ToString
+            Else
+                GRILLA_MOSTRAR.ClearSelection()
+            End If
+        End If
+    End Sub
+
+    Private Sub menucontextual(ByVal e As MouseEventArgs)
         If (xinicio >= 0) Then
 
             If e.Button <> Windows.Forms.MouseButtons.Right Then Return
@@ -438,21 +395,26 @@ Public Class Form3
 b:
     End Sub
 
-    Public dtevento As DataTable
+    Private Sub grilla_mouse_up(ByVal e As DataGridViewCellMouseEventArgs)
+        If e.Button <> Windows.Forms.MouseButtons.Right Then
+            yfin = e.ColumnIndex
+            If e.ColumnIndex >= 2 And e.RowIndex >= 0 And yinicio = e.ColumnIndex Then
+                xfin = e.RowIndex
+                yfin = e.ColumnIndex
+            Else
+                GRILLA_MOSTRAR.ClearSelection()
+            End If
+        End If
+    End Sub
+
     Private Sub menuChoice(ByVal sender As Object, ByVal e As EventArgs)
         Dim item = CType(sender, ToolStripMenuItem)
-
         Dim selection = CInt(item.Tag)
+
         Select Case selection
             Case 1
                 Dim sala = (Mid(grilla_horario.Columns(Int(yinicio)).ColumnName, 1, InStr(grilla_horario.Columns(Int(yinicio)).ColumnName, vbNewLine)))
-                'Dim selectedCellCount As Integer = GRILLA_MOSTRAR.GetCellCount(DataGridViewElementStates.Selected)
-
-                'Dim sb As New System.Text.StringBuilder()
-                'Dim isa = Mid((Replace(Mid(GRILLA_MOSTRAR.Columns(GRILLA_MOSTRAR.SelectedCells(0).ColumnIndex).HeaderText, 1, 10), " ", "")), 5, 3)
-                ''Agregar_Evento.TextBox2.Text = isa
-                ''Agregar_Evento.Show()
-
+                Dim nombresala = Split(grilla_horario.Columns(Int(yinicio)).ColumnName, vbNewLine)
                 Dim dia = Mid(FormatDateTime(Mes.SelectionStart, DateFormat.LongDate), 1, 2)
                 If dia.ToString.ToUpper = "LU" Then
                     evento.CB_Lunes.CheckState = CheckState.Checked
@@ -468,19 +430,14 @@ b:
                     evento.CB_Domingo.CheckState = CheckState.Checked
                 Else
                     evento.CB_Sabado.CheckState = CheckState.Checked
-
                 End If
-
                 evento.TXT_Sala.Text = Mid(sala.ToUpper, 1, sala.Length - 1)
-
                 If xinicio < 14 Then
                     evento.LBL_Jornada.Text = "DIURNO"
                 Else
                     evento.LBL_Jornada.Text = "VESPERTINO"
                 End If
-
                 Dim temp_arr_horario() As Char = evento.LBL_Bloque.Text.ToCharArray
-
                 For k = CInt(xinicio) To CInt(xfin)
                     temp_arr_horario(k) = "1"
                 Next
@@ -489,22 +446,45 @@ b:
                     bloque = bloque & temp_arr_horario(k)
                 Next
                 evento.LBL_Bloque.Text = bloque
+                evento.LBL_sala.Text = nombresala(0)
+                evento.LBL_dia.Text = FormatDateTime(Me.Mes.SelectionStart, DateFormat.LongDate)
 
                 evento.Show()
 
+
             Case 2
                 Dim evento = Split(GRILLA_MOSTRAR.Rows(xinicio).Cells(yinicio).ToolTipText, vbNewLine)
-                Dim dia = FormatDateTime(Me.Mes.SelectionStart, DateFormat.LongDate)
-                dtevento = dthorario.ConsultaEvento(dia, evento(4).ToString, evento(0).ToString, evento(3).ToString.ToUpper)
+
+                'Dim dia = FormatDateTime(Me.Mes.SelectionStart, DateFormat.LongDate)
+                Dt_eventos = dthorario.ConsultaEvento(FormatDateTime(Me.Mes.SelectionStart, DateFormat.LongDate), evento(4).ToString, evento(0).ToString, evento(3).ToString.ToUpper)
+
                 HU3.Show()
 
 
         End Select
+
     End Sub
 
+    Private Sub cargar_form3()
+        Dim MyView As DataView = New DataView(dtnodosSalas)
+        Dim dtSinDuplicados As DataTable
+        dtSinDuplicados = MyView.ToTable(True, dtnodosSalas.Columns(3).ColumnName.ToString, dtnodosSalas.Columns(1).ColumnName.ToString)
+        TV_FiltroSala.Nodes.Add("TODAS LAS SALAS")
+        TV_FiltroSala.Nodes(0).Nodes.Add("Salas")
+        TV_FiltroSala.Nodes(0).Nodes.Add("Otros")
+        For J = 0 To dtSinDuplicados.Rows.Count - 1
+            Dim encontrar = dtSinDuplicados.Rows(J).Item(1)
+            If InStr(Replace(encontrar.ToString.ToUpper, " ", ""), "SAL") > 0 Then
+                TV_FiltroSala.Nodes(0).Nodes(0).Nodes.Add(encontrar.ToString.ToUpper)
+            Else
+                TV_FiltroSala.Nodes(0).Nodes(1).Nodes.Add(encontrar.ToString.ToUpper)
+            End If
+        Next
+        'GRILLA_MOSTRAR.DataSource = grilla_horario
+        cargar(Mid(FormatDateTime(Mes.SelectionStart, DateFormat.LongDate), 1, 2).ToUpper)
 
 
-
+    End Sub
 
     Private Sub ToolStripButton1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
         Mantenedor_Programas.Show()
@@ -522,7 +502,4 @@ b:
         Grafico.Show()
     End Sub
 
-    Private Sub ToolStripButton3_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton3.Click
-        HU21.Show()
-    End Sub
 End Class

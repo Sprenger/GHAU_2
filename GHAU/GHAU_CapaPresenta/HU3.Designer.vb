@@ -52,6 +52,7 @@ Partial Class HU3
         Me.DTP_Termino = New System.Windows.Forms.DateTimePicker
         Me.BTN_Eliminar = New System.Windows.Forms.Button
         Me.CB_Sala = New System.Windows.Forms.ComboBox
+        Me.LBL_dia = New System.Windows.Forms.Label
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -340,11 +341,22 @@ Partial Class HU3
         Me.CB_Sala.Size = New System.Drawing.Size(121, 21)
         Me.CB_Sala.TabIndex = 31
         '
+        'LBL_dia
+        '
+        Me.LBL_dia.AutoSize = True
+        Me.LBL_dia.Location = New System.Drawing.Point(162, 70)
+        Me.LBL_dia.Name = "LBL_dia"
+        Me.LBL_dia.Size = New System.Drawing.Size(45, 13)
+        Me.LBL_dia.TabIndex = 34
+        Me.LBL_dia.Text = "Label13"
+        Me.LBL_dia.Visible = False
+        '
         'HU3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1227, 92)
+        Me.Controls.Add(Me.LBL_dia)
         Me.Controls.Add(Me.CB_Sala)
         Me.Controls.Add(Me.BTN_Eliminar)
         Me.Controls.Add(Me.LBL_Jornada)
@@ -402,4 +414,5 @@ Partial Class HU3
     Friend WithEvents DTP_Termino As System.Windows.Forms.DateTimePicker
     Friend WithEvents BTN_Eliminar As System.Windows.Forms.Button
     Friend WithEvents CB_Sala As System.Windows.Forms.ComboBox
+    Friend WithEvents LBL_dia As System.Windows.Forms.Label
 End Class

@@ -227,7 +227,7 @@ Public Class MantenedorBD
 
 
     Sub eliminarEvento(ByVal nrc As String)
-        Dim insertar As String = "delete from horarios where nrc=" & nrc
+        Dim insertar As String = "delete from horarios where nrc='" & nrc & "'"
 
 
         '       insertar = "insert into horarios values(@fechacarga,'" & dias(0) & "',10,'" & (dt.rows.count + 1) & _
@@ -1500,7 +1500,11 @@ Public Class MantenedorBD
     End Function
 
     Public Function consultarHorario(ByVal nrc As String) As DataTable
-        Dim consulta = ("select * from Horarios where nrc=" & nrc)
+        Dim consulta = ("select  h.fecha_carga, h.dia, h.cantidad, h.nrc , h.seccion , h.lista_cruzada, h.nrc_ligado, h.id_listas_cruzadas, " & _
+                        "h.sala_codigo, h.jornada_codigo, h.curso_materia, h.tipo_actividad, h.campus_codigo, h.bloque_codigo, h.Rut_docente," & _
+        "h.modalidad_codigo, h.unidad_academica_codigo, h.Fecha_inicio, h.Fecha_fin, h.Nombre_curso, h.Tipo_Carga, h.Programa, h.Nivel_Curso, h.Periodo, h.Codigo_Programa, d.nombre " & _
+       "from Horarios h, Docentes D where nrc='" & nrc & "' and d.rut_docente=h.Rut_docente")
+
         Dim cmd As New SqlCommand
         Dim dt As New DataTable
         Try
@@ -1756,7 +1760,7 @@ Public Class MantenedorBD
     End Function
     Function ConsultarEventos(ByVal DIA As String, ByVal PROFESOR As String, ByVal NRC As String, ByVal NOMBRE As String) As DataTable
         Dim consulta As String = "select H.bloque_codigo, H.dia, H.cantidad, H.nrc, s.sala, H.Fecha_inicio, H.Fecha_fin, H.Nombre_curso , D.nombre from horarios H, Docentes D , salas s " & _
-        "WHERE H.nrc = " & NRC & "  AND D.rut_docente = H.Rut_docente and s.sala_codigo = h.sala_codigo"
+        "WHERE H.nrc = '" & NRC & "'  AND D.rut_docente = H.Rut_docente and s.sala_codigo = h.sala_codigo"
 
 
         Dim cmd As New SqlCommand

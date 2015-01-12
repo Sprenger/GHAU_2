@@ -66,9 +66,11 @@
     <Compile Include="BaseDato.vb" />
     <Compile Include="coneccion.vb" />
     <Compile Include="Control_BaseDato.vb" />
+    <Compile Include="Docente.vb" />
     <Compile Include="Ingresar.vb" />
     <Compile Include="LLenadoGrillaHorario.vb" />
     <Compile Include="MantenedorBD.vb" />
+    <Compile Include="Modalidades.vb" />
     <Compile Include="Mod_Coneccion.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -86,6 +88,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Programas.vb" />
+    <Compile Include="Salas.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -82,3 +82,15 @@ C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_C
 C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_CapaNegocio.dll
 C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_CapaNegocio.xml
 C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_CapaNegocio.pdb
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\bin\Debug\GHAU_CapaNegocio.dll
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\bin\Debug\GHAU_CapaNegocio.pdb
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\bin\Debug\GHAU_CapaNegocio.xml
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\bin\Debug\GHAU_CapaDatos.dll
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\bin\Debug\GHAU_CapaDatos.pdb
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\bin\Debug\GHAU_CapaDatos.xml
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_CapaNegocio.Resources.resources
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_CapaNegocio.vbproj.GenerateResource.Cache
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_CapaNegocio.dll
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_CapaNegocio.xml
+C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaNegocio\obj\Debug\GHAU_CapaNegocio.pdb

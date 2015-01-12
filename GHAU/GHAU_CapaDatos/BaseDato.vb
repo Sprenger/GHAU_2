@@ -168,7 +168,7 @@ Public Class BaseDato
 
 
     End Function
-    
+
 
     Public Function IngresarCampus(ByVal codigo As String, ByVal descripcion As String)
         Dim insertar As String = "insert into campus values('" & Replace(codigo.ToUpper, " ", "") & "', '" & Replace(descripcion.ToUpper, " ", "") & "')"
@@ -242,7 +242,7 @@ Public Class BaseDato
         If Not dtU_q_paga.Rows.Count > 0 Then
             Dim j = 1 + 2
         End If
-    'Dim FECHA = DateTime.ParseExact(Mid(Fecha_carga, 1, 10), "yyyyMMddhhmm", Nothing)
+        'Dim FECHA = DateTime.ParseExact(Mid(Fecha_carga, 1, 10), "yyyyMMddhhmm", Nothing)
         Dim dt_temp_tpact As DataTable = mostrar("select * from tipos_actividades where descripcion = '" & Replace(tipo_actividad, " ", "") & "'")
         ' Dim asda = "select * from tipos_actividades where descripcion = '" & Replace(tipo_actividad, " ", "") & "'"
         If dt_temp_tpact.Rows.Count = 0 Then
@@ -415,6 +415,23 @@ Public Class BaseDato
             desconectado()
         End Try
     End Function
+
+    Public Function EliminarEventos(ByVal NRC As String)
+        'Dim codigo = Mid(Replace(Unidad_academica.ToUpper, " ", ""), 1, 9)
+        Dim Eliminar As String = "delete from horarios where nrc ='" & NRC & "'"
+        Try
+            conectado()
+            Dim ds As New DataSet
+            Dim da As New SqlDataAdapter(Eliminar.ToUpper, cnn)
+            da.Fill(ds)
+            Return True
+        Catch ex As Exception
+            Return False
+        Finally
+            desconectado()
+        End Try
+    End Function
+
     Public Function IngresarUnidadAcademica(ByVal Unidad_academica As String)
         Dim codigo = Mid(Replace(Unidad_academica.ToUpper, " ", ""), 1, 9)
         Dim insertar As String = "insert into Unidades_Academicas values ('" & codigo & "','" & Unidad_academica.ToUpper & "')"
@@ -484,9 +501,11 @@ Public Class BaseDato
         Return dtprogramas
     End Function
 
-
     Public Function consultarNiveles() As DataTable
         Dim dtnivel_curso As DataTable = mostrar("select distinct(nivel_curso) from Horarios")
         Return dtnivel_curso
     End Function
+
+
+
 End Class
