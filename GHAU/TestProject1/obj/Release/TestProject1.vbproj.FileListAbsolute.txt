@@ -1,0 +1,13 @@
+C:\GHAU\GHAU\TestProject1\obj\Release\ResolveAssemblyReference.cache
+C:\GHAU\GHAU\TestProject1\bin\Release\TestProject1.dll
+C:\GHAU\GHAU\TestProject1\bin\Release\TestProject1.pdb
+C:\GHAU\GHAU\TestProject1\bin\Release\TestProject1.xml
+C:\GHAU\GHAU\TestProject1\bin\Release\GHAU_CapaDatos.dll
+C:\GHAU\GHAU\TestProject1\bin\Release\GHAU_CapaNegocio.dll
+C:\GHAU\GHAU\TestProject1\bin\Release\GHAU_CapaNegocio.pdb
+C:\GHAU\GHAU\TestProject1\bin\Release\GHAU_CapaNegocio.xml
+C:\GHAU\GHAU\TestProject1\bin\Release\GHAU_CapaDatos.pdb
+C:\GHAU\GHAU\TestProject1\bin\Release\GHAU_CapaDatos.xml
+C:\GHAU\GHAU\TestProject1\obj\Release\TestProject1.dll
+C:\GHAU\GHAU\TestProject1\obj\Release\TestProject1.xml
+C:\GHAU\GHAU\TestProject1\obj\Release\TestProject1.pdb

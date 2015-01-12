@@ -1,0 +1,33 @@
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaPresenta.exe.manifest
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaPresenta.application
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaPresenta.exe
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaPresenta.pdb
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaPresenta.xml
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaDatos.dll
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaNegocio.dll
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaNegocio.pdb
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaNegocio.xml
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaDatos.pdb
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\bin\Release\GHAU_CapaDatos.xml
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\ResolveAssemblyReference.cache
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.evento.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.HU3.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.MODIFICARBETAvb.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.ImportarHorario.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.Form2.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.Form3.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.importar_sala.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.INICIO.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.Resources.resources
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.vbproj.GenerateResource.Cache
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.exe.manifest
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.application
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.exe
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.xml
+C:\Users\FGM\Desktop\New folder\branches\Beta\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.pdb
+C:\GHAU\GHAU\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.exe
+C:\GHAU\GHAU\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.xml
+C:\GHAU\GHAU\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.pdb
+C:\Users\Sprenger\Documents\ghau_2\GHAU\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.exe
+C:\Users\Sprenger\Documents\ghau_2\GHAU\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.xml
+C:\Users\Sprenger\Documents\ghau_2\GHAU\GHAU_CapaPresenta\obj\Release\GHAU_CapaPresenta.pdb
