@@ -521,4 +521,8 @@ b:
     Private Sub BTN_Uso_salas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_Uso_salas.Click
         Grafico.Show()
     End Sub
+
+    Private Sub ToolStripButton3_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton3.Click
+        HU21.Show()
+    End Sub
 End Class

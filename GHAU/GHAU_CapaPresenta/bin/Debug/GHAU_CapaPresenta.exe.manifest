@@ -101,19 +101,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>7Lx6p+I4fp6yXUMwOKSekpEDtu0=</dsig:DigestValue>
+        <dsig:DigestValue>zMZ2bn8Pd+3iM/tQ62mptIKnslg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GHAU_CapaPresenta.exe" size="2567680">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GHAU_CapaPresenta.exe" size="2569216">
       <assemblyIdentity name="GHAU_CapaPresenta" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>t1bFqatyY2KwK0acuF77jS45ppA=</dsig:DigestValue>
+        <dsig:DigestValue>u+IvnVshKX6l/pp5VHqfvNsbFug=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

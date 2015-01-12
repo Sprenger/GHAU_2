@@ -23,7 +23,7 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.Mes = New System.Windows.Forms.MonthCalendar
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.TSB_importar = New System.Windows.Forms.ToolStripButton
@@ -52,6 +52,7 @@ Partial Class Form3
         Me.BTN_FondoAsignaturas = New System.Windows.Forms.Button
         Me.BTN_FondoEventos = New System.Windows.Forms.Button
         Me.color = New System.Windows.Forms.ColorDialog
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton
         Me.ToolStrip1.SuspendLayout()
         CType(Me.GRILLA_MOSTRAR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -67,7 +68,7 @@ Partial Class Form3
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TSB_importar, Me.BTN_IngresoSalas, Me.BTN_Exportar, Me.ToolStripButton1, Me.ToolStripButton2, Me.BTN_G_Usabilidad, Me.BTN_Uso_salas})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TSB_importar, Me.ToolStripButton3, Me.BTN_IngresoSalas, Me.BTN_Exportar, Me.ToolStripButton1, Me.ToolStripButton2, Me.BTN_G_Usabilidad, Me.BTN_Uso_salas})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1222, 25)
@@ -146,14 +147,14 @@ Partial Class Form3
         Me.GRILLA_MOSTRAR.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GRILLA_MOSTRAR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GRILLA_MOSTRAR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.GRILLA_MOSTRAR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GRILLA_MOSTRAR.Location = New System.Drawing.Point(284, 28)
         Me.GRILLA_MOSTRAR.MaximumSize = New System.Drawing.Size(926, 476)
@@ -339,11 +340,20 @@ Partial Class Form3
         Me.BTN_FondoEventos.Text = "Fondo"
         Me.BTN_FondoEventos.UseVisualStyleBackColor = True
         '
+        'ToolStripButton3
+        '
+        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton3.Text = "Cargar Eventos"
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1222, 517)
+        Me.ClientSize = New System.Drawing.Size(1222, 518)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.GRILLA_MOSTRAR)
         Me.Controls.Add(Me.ToolStrip1)
@@ -394,4 +404,5 @@ Partial Class Form3
     Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
     Friend WithEvents BTN_G_Usabilidad As System.Windows.Forms.ToolStripButton
     Friend WithEvents BTN_Uso_salas As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
 End Class
