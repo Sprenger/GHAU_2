@@ -43,3 +43,12 @@ C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDat
 C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDatos.dll
 C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDatos.xml
 C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDatos.pdb
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\bin\Debug\GHAU_CapaDatos.dll
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\bin\Debug\GHAU_CapaDatos.pdb
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\bin\Debug\GHAU_CapaDatos.xml
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDatos.Resources.resources
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDatos.vbproj.GenerateResource.Cache
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDatos.dll
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDatos.xml
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaDatos\obj\Debug\GHAU_CapaDatos.pdb

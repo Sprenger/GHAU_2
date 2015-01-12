@@ -89,7 +89,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9dt3FFF1/p2zbSp5Ghh6yJNhpSg=</dsig:DigestValue>
+        <dsig:DigestValue>Dly/i28Mx8psm2mrMM1DTGJjWZs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -101,19 +101,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>hWzjQSktyjZIXhe3QZezxvIbh1c=</dsig:DigestValue>
+        <dsig:DigestValue>4npO4chVkDsy8yXQV/V9uGOmyR8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GHAU_CapaPresenta.exe" size="2560512">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GHAU_CapaPresenta.exe" size="2580992">
       <assemblyIdentity name="GHAU_CapaPresenta" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>CQJ9Ux3PSzFQY+SzOqU7WCeAGZE=</dsig:DigestValue>
+        <dsig:DigestValue>xv9M+wTbj9XDoIhYaiyp3D0OgRA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

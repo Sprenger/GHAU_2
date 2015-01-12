@@ -184,3 +184,4 @@ C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_Capa
 C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.vbproj.GenerateResource.Cache
 C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.exe.manifest
 C:\Users\FGM\Desktop\Ghau_Repo\GHAU_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.application
+C:\Users\Sprenger\Documents\ghau_2\GHAU_2\GHAU\GHAU_CapaPresenta\obj\Debug\GHAU_CapaPresenta.liberar_hu23.resources

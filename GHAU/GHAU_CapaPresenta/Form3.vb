@@ -376,10 +376,20 @@ Public Class Form3
                 End If
             Next
             Dim cms = New ContextMenuStrip
-            If banderaLibre Then 'And contador = (CInt(xfin) - CInt(xinicio)) Then
+            Dim f = GRILLA_MOSTRAR.Rows(CInt(xinicio.ToString)).Cells(CInt(yinicio)).ToolTipText
+            Dim bandera2 = Split(f.ToString, vbNewLine)
+
+            If banderaLibre = True And f = "" Then 'And contador = (CInt(xfin) - CInt(xinicio)) Then
+                'Dim f = GRILLA_MOSTRAR.Rows(CInt(xinicio.ToString)).Cells(CInt(yinicio)).ToolTipText
                 Dim item1 = cms.Items.Add("Agregar Evento")
                 item1.Tag = 1
                 AddHandler item1.Click, AddressOf menuChoice
+
+            ElseIf f <> "" And bandera2(2) <> "EVENTO" Then
+                Dim item0 = cms.Items.Add("Liberar")
+                item0.Tag = 0
+                AddHandler item0.Click, AddressOf menuChoice
+
             Else
                 Dim item2 = cms.Items.Add("Modificar")
                 item2.Tag = 2
@@ -394,6 +404,11 @@ Public Class Form3
         End If
 b:
     End Sub
+
+
+
+
+
 
     Private Sub grilla_mouse_up(ByVal e As DataGridViewCellMouseEventArgs)
         If e.Button <> Windows.Forms.MouseButtons.Right Then
