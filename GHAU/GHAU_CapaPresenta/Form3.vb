@@ -17,6 +17,7 @@ Public Class Form3
     Public dtprogramas As DataTable = dthorario.consultarprogramas
     Public dtunidaesAcademicas As DataTable = dthorario.consultarunidadesacademicas
     Public Dt_eventos As DataTable
+    Public dt_liberar As DataTable
     Public dtevento As DataTable
     Private Sub Form3_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cargar_form3()
@@ -386,9 +387,9 @@ Public Class Form3
                 AddHandler item1.Click, AddressOf menuChoice
 
             ElseIf f <> "" And bandera2(2) <> "EVENTO" Then
-                Dim item0 = cms.Items.Add("Liberar")
-                item0.Tag = 0
-                AddHandler item0.Click, AddressOf menuChoice
+                Dim item3 = cms.Items.Add("Liberar")
+                item3.Tag = 3
+                AddHandler item3.Click, AddressOf menuChoice
 
             Else
                 Dim item2 = cms.Items.Add("Modificar")
@@ -475,6 +476,9 @@ b:
 
                 HU3.Show()
 
+            Case 3
+                Dim liberar = Split(GRILLA_MOSTRAR.Rows(xinicio).Cells(yinicio).ToolTipText, vbNewLine)
+               
 
         End Select
 

@@ -1788,6 +1788,31 @@ Public Class MantenedorBD
 
     End Function
 
+    Function Liberar(ByVal DIA As String, ByVal PROFESOR As String, ByVal NRC As String, ByVal NOMBRE As String) As DataTable
+        Dim consulta As String = "select H.bloque_codigo, H.dia, H.cantidad, H.nrc, s.sala, H.Fecha_inicio, H.Fecha_fin, H.Nombre_curso , D.nombre from horarios H, Docentes D , salas s " & _
+        "WHERE H.nrc = '" & NRC & "'  AND D.rut_docente = H.Rut_docente and s.sala_codigo = h.sala_codigo"
+
+        Dim cmd As New SqlCommand
+        Dim dt As New DataTable
+        Try
+            cnn.Open()
+            cmd = New SqlCommand(consulta.ToUpper)
+            cmd.CommandType = CommandType.Text
+            cmd.Connection = cnn
+
+            If cmd.ExecuteNonQuery Then
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            End If
+        Catch ex As Exception
+            'MsgBox("Error al mostrar " + ex.Message)
+            Return Nothing
+        Finally
+            cnn.Close()
+        End Try
+    End Function
+
 
 
 

@@ -70,6 +70,7 @@
     <Compile Include="EstadoBaseDatos.vb" />
     <Compile Include="Excel.vb" />
     <Compile Include="Negocio.vb" />
+    <Compile Include="negocio_hu23.vb" />
     <Compile Include="Programas.vb" />
     <Compile Include="Validado_Rut.vb" />
     <Compile Include="ImportarHorario.vb" />
