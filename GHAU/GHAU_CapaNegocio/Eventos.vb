@@ -109,6 +109,7 @@
     End Function
 
     Function consultarExiste(ByVal bloque As String, ByVal sala As String, ByVal dias As String) As DataTable
+        bloque = Replace(bloque, "0", "_")
         Dim arrbloques = bloque.ToCharArray
         For i = 11 To 13
             If arrbloques(i) = "1" Then
@@ -116,22 +117,27 @@
 
             End If
         Next
-        Dim Nuevobloque As String
+        Dim Nuevobloque As String = ""
         For i = 0 To arrbloques.Length - 1
             Nuevobloque = Nuevobloque & arrbloques(i)
         Next
 
 
 
+        Dim dt_Existe As DataTable
         Dim respuesta As Boolean = False
 
-1:      Nuevobloque = Replace(Nuevobloque, "0", "_")
-        Dim dt_Existe As DataTable = x.BuscarExiste(Nuevobloque, sala, dias)
+1:
+        If (Replace(Nuevobloque, "_", "")) = "" Then
+            Return Nothing
+        End If
+
+        dt_Existe = x.BuscarExiste(Nuevobloque, sala, dias)
         If dt_Existe.Rows.Count = 0 And InStr(Nuevobloque, "1") > 0 Then
             arrbloques = Nuevobloque.ToCharArray
             For i = 0 To arrbloques.Length - 1
                 If arrbloques(i) = "1" Then
-                    arrbloques(i) = "0"
+                    arrbloques(i) = "_"
                     Exit For
                 End If
             Next

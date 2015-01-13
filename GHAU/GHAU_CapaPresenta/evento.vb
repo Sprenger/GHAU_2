@@ -3,101 +3,97 @@
 Public Class evento
     Private CB_dias As String
     Sub Crear()
-
-
-
         If TXT_nombre_actividad.Text <> "" Then
             Dim ingresar As New GHAU_CapaNegocio.Eventos
 
-            Dim consu = ingresar.consultarExiste(LBL_Bloque.Text, LBL_sala.Text, Mid(CB_dias, 1, CB_dias.Length - 3) & ")")
-            If consu.Rows.Count > 0 Then
+            'Dim consu = ingresar.consultarExiste(LBL_Bloque.Text, LBL_sala.Text, Mid(CB_dias, 1, CB_dias.Length - 3) & ")")
+            If Not ingresar.consultarExiste(LBL_Bloque.Text, LBL_sala.Text, Mid(CB_dias, 1, CB_dias.Length - 3) & ")") Is Nothing Then
                 Dim result As Integer = MessageBox.Show("Hay Choque con otros horarios, " & vbNewLine & "Desea agregar de todos modos?, esto creara choque de horarios", "caption", MessageBoxButtons.YesNo)
                 If result = DialogResult.No Then
                     GoTo 3
-                ElseIf result = DialogResult.Yes Then
-
-
-
-                    Dim dt_Sala As New GHAU_CapaDatos.Salas
-
-                    Dim ingresoevento As New GHAU_CapaNegocio.ImportarHorario
-
-                    Dim dias As String = ""
-                    Dim dt_eventoNRC = ingresar.ConsultarEventos("EVENTO", "curso_materia", "MAX(nrc)")
-                    Dim NRC_evento = Split(dt_eventoNRC.Rows(0).Item(0).ToString, "-")
-                    Dim nrc As String
-                    If NRC_evento.Length = 1 Then
-                        nrc = "EV-0"
-                    Else
-                        nrc = NRC_evento(0) & "-" & (CInt(NRC_evento(1).ToString) + 1)
-
-                    End If
-                    If CB_Lunes.Checked = True Then
-                        dias = "1"
-
-                        ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
-                                               nrc, DateTime.Now(), "", CB_Docente.Text)
-                    End If
-                    If CB_Martes.Checked = True Then
-                        dias = "2"
-                        ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
-                                                  nrc, DateTime.Now(), "", CB_Docente.Text)
-                    End If
-                    If CB_Miercoles.Checked = True Then
-                        dias = "3"
-                        ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
-                                                    nrc, DateTime.Now(), "", CB_Docente.Text)
-                    End If
-                    If CB_Jueves.Checked = True Then
-                        dias = "4"
-                        ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
-                                                   nrc, DateTime.Now(), "", CB_Docente.Text)
-                    End If
-                    If CB_Viernes.Checked = True Then
-                        dias = "5"
-                        ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
-                                                     nrc, DateTime.Now(), "", CB_Docente.Text)
-                    End If
-                    If CB_Sabado.Checked = True Then
-                        dias = "6"
-                        ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
-                                                 nrc, DateTime.Now(), "", CB_Docente.Text)
-                    End If
-                    If CB_Domingo.Checked = True Then
-                        dias = "7"
-                        ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
-                                                                nrc, DateTime.Now(), "", CB_Docente.Text)
-                    End If
-
-
-                    Dim dia = 1
-                    If Mid(LBL_dia.Text.ToUpper, 1, 2) = "LU" And CB_Lunes.Checked = True Then
-                        llenado(nrc)
-                    ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "MA" And CB_Martes.Checked = True Then
-                        llenado(nrc)
-                    ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "MI" And CB_Miercoles.Checked = True Then
-                        llenado(nrc)
-                    ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "JU" And CB_Jueves.Checked = True Then
-                        llenado(nrc)
-                    ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "VI" And CB_Viernes.Checked = True Then
-                        llenado(nrc)
-                    ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "SA" And CB_Sabado.Checked = True Then
-                        llenado(nrc)
-                    ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "DO" And CB_Domingo.Checked = True Then
-                        llenado(nrc)
-
-                    End If
-                    'Dim k = 1 + 1
-
                 End If
-            Else
-2:
             End If
-            Me.Close()
+
+            Dim dt_Sala As New GHAU_CapaDatos.Salas
+
+            Dim ingresoevento As New GHAU_CapaNegocio.ImportarHorario
+
+            Dim dias As String = ""
+            Dim dt_eventoNRC = ingresar.ConsultarEventos("EVENTO", "curso_materia", "MAX(nrc)")
+            Dim NRC_evento = Split(dt_eventoNRC.Rows(0).Item(0).ToString, "-")
+            Dim nrc As String
+            If NRC_evento.Length = 1 Then
+                nrc = "EV-0"
+            Else
+                nrc = NRC_evento(0) & "-" & (CInt(NRC_evento(1).ToString) + 1)
+
+            End If
+            If CB_Lunes.Checked = True Then
+                dias = "1"
+
+                ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
+                                       nrc, DateTime.Now(), "", CB_Docente.Text)
+            End If
+            If CB_Martes.Checked = True Then
+                dias = "2"
+                ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
+                                          nrc, DateTime.Now(), "", CB_Docente.Text)
+            End If
+            If CB_Miercoles.Checked = True Then
+                dias = "3"
+                ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
+                                            nrc, DateTime.Now(), "", CB_Docente.Text)
+            End If
+            If CB_Jueves.Checked = True Then
+                dias = "4"
+                ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
+                                           nrc, DateTime.Now(), "", CB_Docente.Text)
+            End If
+            If CB_Viernes.Checked = True Then
+                dias = "5"
+                ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
+                                             nrc, DateTime.Now(), "", CB_Docente.Text)
+            End If
+            If CB_Sabado.Checked = True Then
+                dias = "6"
+                ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
+                                         nrc, DateTime.Now(), "", CB_Docente.Text)
+            End If
+            If CB_Domingo.Checked = True Then
+                dias = "7"
+                ingresar.Ingreso_M_Eventos(CStr(Me.DTP_Inicio.Value), CStr(Me.DTP_Termino.Value), dias, TXT_nombre_actividad.Text, "VM-" & LBL_sala.Text, LBL_Bloque.Text, _
+                                                        nrc, DateTime.Now(), "", CB_Docente.Text)
+            End If
+
+
+            Dim dia = 1
+            If Mid(LBL_dia.Text.ToUpper, 1, 2) = "LU" And CB_Lunes.Checked = True Then
+                llenado(nrc)
+            ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "MA" And CB_Martes.Checked = True Then
+                llenado(nrc)
+            ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "MI" And CB_Miercoles.Checked = True Then
+                llenado(nrc)
+            ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "JU" And CB_Jueves.Checked = True Then
+                llenado(nrc)
+            ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "VI" And CB_Viernes.Checked = True Then
+                llenado(nrc)
+            ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "SA" And CB_Sabado.Checked = True Then
+                llenado(nrc)
+            ElseIf Mid(LBL_dia.Text.ToUpper, 1, 2) = "DO" And CB_Domingo.Checked = True Then
+                llenado(nrc)
+
+            End If
+            'Dim k = 1 + 1
+
+        End If
+
+2:
+
+        Me.Close()
 3:
 
 
-        End If 'end if consu.rows
+
 
     End Sub
 
