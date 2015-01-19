@@ -22,6 +22,7 @@ Partial Class Liberar_HU23
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Liberar_HU23))
         Me.DTP_FIN = New System.Windows.Forms.DateTimePicker
         Me.DTP_Inicio = New System.Windows.Forms.DateTimePicker
         Me.Label5 = New System.Windows.Forms.Label
@@ -153,6 +154,7 @@ Partial Class Liberar_HU23
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Liberar_HU23"
         Me.Text = "Liberar_HU23"
         Me.ResumeLayout(False)

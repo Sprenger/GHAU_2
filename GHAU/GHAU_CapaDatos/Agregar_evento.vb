@@ -147,8 +147,9 @@ Public Class Agregar_evento
 
     End Sub
 
-    Public Function BuscarExiste(ByVal bloque As String, ByVal sala As String, ByVal dias As String) As DataTable
-        Dim consulta As String = "select * from horarios where bloque_codigo like '" & bloque & "' and sala_codigo = 'VM-" & sala & "' and " & dias
+    Public Function BuscarExiste(ByVal bloque As String, ByVal bloque2 As String, ByVal sala As String, ByVal dias As String) As DataTable
+        sala = Replace(sala, "VM-", "")
+        Dim consulta As String = "select * from horarios where (bloque_codigo like '" & bloque & "' or bloque_codigo like '" & bloque2 & "') and sala_codigo = 'VM-" & sala & "' and " & dias
         Dim cmd As New SqlCommand
         Dim dt As New DataTable
         conectado()
@@ -174,6 +175,38 @@ Public Class Agregar_evento
         End Try
         '  Return dt
     End Function
+
+
+    Sub eliminarEvento_nrc(ByVal NRC As String)
+        'Dim codigo = Mid(Replace(Unidad_academica.ToUpper, " ", ""), 1, 9)
+        Dim Consulta As String = "delete from horarios where tipo_actividad='EVENTO' AND NRC ='" & NRC & "'"
+        Dim cmd As New SqlCommand
+        Dim dt As New DataTable
+        conectado()
+        Try
+            'cnn.Open()
+            cmd = New SqlCommand(Consulta.ToUpper)
+            cmd.CommandType = CommandType.Text
+            cmd.Connection = cnn
+
+            If cmd.ExecuteNonQuery Then
+
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+
+            Else
+
+            End If
+        Catch ex As Exception
+            'MsgBox("Error al mostrar " + ex.Message)
+
+        Finally
+            desconectado()
+        End Try
+        '  Return dt
+    End Sub
+
+
 
     Public Function BuscarEventos(ByVal parametro As String, ByVal columnaconsulta As String, ByVal columnaretorno As String) As DataTable
         'Dim codigo = Mid(Replace(Unidad_academica.ToUpper, " ", ""), 1, 9)
