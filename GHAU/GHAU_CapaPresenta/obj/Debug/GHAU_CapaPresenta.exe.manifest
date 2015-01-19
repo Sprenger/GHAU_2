@@ -82,14 +82,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GHAU_CapaDatos.dll" size="78336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GHAU_CapaDatos.dll" size="78848">
       <assemblyIdentity name="GHAU_CapaDatos" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>afsChyEcsLXa6wCJrTrk4QhwqA0=</dsig:DigestValue>
+        <dsig:DigestValue>olQTAZm65duNzoyBa6gw7A2Q3aY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -101,19 +101,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>h7R4znZDku6alneHfa2b+EkMIzI=</dsig:DigestValue>
+        <dsig:DigestValue>Yn4FlTcDYPnX8ayE+XyDlXHRJ+4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GHAU_CapaPresenta.exe" size="2568192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GHAU_CapaPresenta.exe" size="3080704">
       <assemblyIdentity name="GHAU_CapaPresenta" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>3jubQiqa94SdArZxhhDon/LcsOQ=</dsig:DigestValue>
+        <dsig:DigestValue>HAKWBiHAwGMLvvPI3ItyxCWD6RA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

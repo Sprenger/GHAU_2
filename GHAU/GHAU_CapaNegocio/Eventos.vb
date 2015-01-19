@@ -231,6 +231,7 @@
 
     Function consultarExiste(ByVal bloque As String, ByVal sala As String, ByVal dias As String) As DataTable
         bloque = Replace(bloque, "0", "_")
+        Dim derechaIzq = False
         Dim arrbloques = bloque.ToCharArray
         For i = 11 To 13
             If arrbloques(i) = "1" Then
@@ -242,7 +243,7 @@
         For i = 0 To arrbloques.Length - 1
             Nuevobloque = Nuevobloque & arrbloques(i)
         Next
-
+        Dim Nuevobloque2 = Nuevobloque
 
 
         Dim dt_Existe As DataTable
@@ -253,22 +254,37 @@
             Return Nothing
         End If
 
-        dt_Existe = x.BuscarExiste(Nuevobloque, sala, dias)
+        dt_Existe = x.BuscarExiste(Nuevobloque, Nuevobloque2, sala, dias)
         If dt_Existe.Rows.Count = 0 And InStr(Nuevobloque, "1") > 0 Then
             arrbloques = Nuevobloque.ToCharArray
+
             For i = 0 To arrbloques.Length - 1
                 If arrbloques(i) = "1" Then
                     arrbloques(i) = "_"
                     Exit For
                 End If
             Next
+
+
             Nuevobloque = ""
             For i = 0 To arrbloques.Length - 1
                 Nuevobloque = Nuevobloque & arrbloques(i)
             Next
+            arrbloques = Nuevobloque2.ToCharArray
+
+            For i = arrbloques.Length - 1 To 0 Step -1
+                If arrbloques(i) = "1" Then
+                    arrbloques(i) = "_"
+                    Exit For
+                End If
+            Next
+            Nuevobloque2 = ""
+            For i = 0 To arrbloques.Length - 1
+                Nuevobloque2 = Nuevobloque2 & arrbloques(i)
+            Next
+
 
             GoTo 1
-
         End If
 
         Return dt_Existe 'x.BuscarExiste(bloque, sala)
@@ -276,6 +292,9 @@
     Function ConsultarEventos(ByVal parametro As String, ByVal columnaconsulta As String, ByVal columnaretorno As String) As DataTable
         Return x.BuscarEventos(parametro, columnaconsulta, columnaretorno)
     End Function
+    Sub eliminar(ByVal nrc As String)
+        x.eliminarEvento_nrc(nrc)
+    End Sub
     Sub eliminarEvento(ByVal NRC As String)
         Dim eliminar As New GHAU_CapaDatos.Agregar_evento
 
