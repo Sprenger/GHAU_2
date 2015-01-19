@@ -37,7 +37,7 @@ Public Class ImportarHorario
                                 Dim tempJornada = Mid(Replace(valor(0).ToString, " ", ""), valor(0).ToString.Length)
                                 dthorariodeldia.Rows(j).Item(CInt(horariodelDia.Rows(i).Item(8).ToString) + 1) = tempNRC & "-" & horariodelDia.Rows(i).Item(1) & " " & tempJornada & "++" & valor(1) & "++" & valor(2) & "++" & valor(3) & "++" & valor(4) & "++" & (CInt(valor(5).ToString) + CInt(horariodelDia.Rows(i).Item(7)))
 
-                                Dim c = 1 + 2 + 3
+                                'Dim c = 1 + 2 + 3
 
                             End If
                         Else
@@ -50,7 +50,7 @@ Public Class ImportarHorario
                                 dthorariodeldia.Rows(j).Item(CInt(horariodelDia.Rows(i).Item(8).ToString) + 1) = valor(0) & "-" & horariodelDia.Rows(i).Item(1) & "++" & valor(1) & "++" & valor(2) & "++" & valor(3) & "++" & valor(4) & "++" & (CInt(valor(5).ToString) + CInt(horariodelDia.Rows(i).Item(7)))
                                 Dim k = dthorariodeldia.Rows(j).Item(CInt(horariodelDia.Rows(i).Item(8).ToString) + 1)
 
-                                Dim c = 1 + 2 + 3
+                                'Dim c = 1 + 2 + 3
 
 
                             End If
@@ -1353,17 +1353,17 @@ Public Class ImportarHorario
         If Jornada = "VESPERTINO" Then
 1:
 
-            If 1800 < CInt(inicio) And CInt(inicio) <= 1900 Then 'inicio = "1900" Then
+            If (inicio) = 1900 Then 'inicio = "1900" Then
                 modulo = "15-"
-            ElseIf 1900 < CInt(inicio) And CInt(inicio) <= 1946 Then 'inicio = "1946" Then
+            ElseIf CInt(inicio) = 1946 Then 'inicio = "1946" Then
                 modulo = "16-"
-            ElseIf 1946 < CInt(inicio) And CInt(inicio) <= 2040 Then ' inicio = "2040" Then
+            ElseIf CInt(inicio) = 2040 Then ' inicio = "2040" Then
                 modulo = "17-"
-            ElseIf 2040 < CInt(inicio) And CInt(inicio) <= 2126 Then 'inicio = "2126" Then
+            ElseIf CInt(inicio) = 2126 Then 'inicio = "2126" Then
                 modulo = "18-"
-            ElseIf 2126 < CInt(inicio) And CInt(inicio) <= 2220 Then 'inicio = "2220" Then
+            ElseIf CInt(inicio) = 2220 Then 'inicio = "2220" Then
                 modulo = "19-"
-            ElseIf 2220 < CInt(inicio) And CInt(inicio) <= 2306 Then 'inicio = "2306" Then
+            ElseIf CInt(inicio) = 2306 Then 'inicio = "2306" Then
                 modulo = "20-"
                 'Else
                 '    modulo = "Error"
@@ -1376,18 +1376,18 @@ Public Class ImportarHorario
             End If
 
 
-            If 1845 < CInt(fin) And CInt(fin) <= 1945 Then 'fin = "1945" Then
+            If CInt(fin) = 1945 Then 'fin = "1945" Then
                 modulo = modulo & "15"
 
-            ElseIf 1945 < CInt(fin) And CInt(fin) <= 2030 Then ' fin = "2030" Then
+            ElseIf CInt(fin) = 2030 Then ' fin = "2030" Then
                 modulo = modulo & "16"
-            ElseIf 2030 < CInt(fin) And CInt(fin) <= 2125 Then 'fin = "2125" Then
+            ElseIf CInt(fin) = 2125 Then 'fin = "2125" Then
                 modulo = modulo & "17"
-            ElseIf 2125 < CInt(fin) And CInt(fin) <= 2210 Then 'fin = "2210" Then
+            ElseIf CInt(fin) = 2210 Then 'fin = "2210" Then
                 modulo = modulo & "18"
-            ElseIf 2210 < CInt(fin) And CInt(fin) <= 2305 Then 'fin = "2305" Then
+            ElseIf CInt(fin) = 2305 Then 'fin = "2305" Then
                 modulo = modulo & "19"
-            ElseIf 2305 < CInt(fin) And CInt(fin) <= 2350 Then 'fin = "2350" Then
+            ElseIf CInt(fin) = 2350 Then 'fin = "2350" Then
                 modulo = modulo & "20"
             Else
                 If flag Then 'para que no se quede dando vueltas infinitas

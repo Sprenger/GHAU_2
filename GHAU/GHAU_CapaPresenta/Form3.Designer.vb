@@ -23,10 +23,11 @@ Partial Class Form3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form3))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Me.Mes = New System.Windows.Forms.MonthCalendar
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip
         Me.TSB_importar = New System.Windows.Forms.ToolStripButton
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton
         Me.BTN_IngresoSalas = New System.Windows.Forms.ToolStripButton
         Me.BTN_Exportar = New System.Windows.Forms.ToolStripButton
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton
@@ -52,7 +53,6 @@ Partial Class Form3
         Me.BTN_FondoAsignaturas = New System.Windows.Forms.Button
         Me.BTN_FondoEventos = New System.Windows.Forms.Button
         Me.color = New System.Windows.Forms.ColorDialog
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton
         Me.ToolStrip1.SuspendLayout()
         CType(Me.GRILLA_MOSTRAR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -83,6 +83,15 @@ Partial Class Form3
         Me.TSB_importar.Name = "TSB_importar"
         Me.TSB_importar.Size = New System.Drawing.Size(23, 22)
         Me.TSB_importar.Text = "Importar"
+        '
+        'ToolStripButton3
+        '
+        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton3.Text = "Cargar Eventos"
         '
         'BTN_IngresoSalas
         '
@@ -147,14 +156,14 @@ Partial Class Form3
         Me.GRILLA_MOSTRAR.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GRILLA_MOSTRAR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GRILLA_MOSTRAR.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GRILLA_MOSTRAR.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GRILLA_MOSTRAR.Location = New System.Drawing.Point(284, 28)
         Me.GRILLA_MOSTRAR.MaximumSize = New System.Drawing.Size(926, 476)
@@ -339,15 +348,6 @@ Partial Class Form3
         Me.BTN_FondoEventos.TabIndex = 12
         Me.BTN_FondoEventos.Text = "Fondo"
         Me.BTN_FondoEventos.UseVisualStyleBackColor = True
-        '
-        'ToolStripButton3
-        '
-        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton3.Text = "Cargar Eventos"
         '
         'Form3
         '

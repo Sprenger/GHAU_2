@@ -6,6 +6,7 @@ Imports GHAU_CapaDatos.BaseDato
 Public Class HU21
     Dim dt As New GHAU_CapaNegocio.Excel
     Dim dt2 As New GHAU_CapaNegocio.Eventos
+
     Dim _GRILLA_ As DataTable
 
     Sub esconder()
@@ -71,17 +72,21 @@ Public Class HU21
         llamar()
 
     End Sub
+    Public periodo As String
     Sub llamar()
         Dim dt3 As DataTable = dt2.ingreso_evento(_GRILLA_)
+        Dim x As New GHAU_CapaDatos.Agregar_evento
 
-        If dt3 Is Nothing Then
-            Me.Close()
-        Else
+        If Not dt3 Is Nothing Then
+
             TableLayoutPanel5.Size = New System.Drawing.Size(661, 427)
             LBL_Error.Show()
             Grilla_dx.Show()
             Grilla_dx.DataSource = dt3
             Grilla_dx.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        Else
+            GHAU_CapaPresenta.Form3.cargar((FormatDateTime(Form3.Mes.SelectionStart, DateFormat.LongDate)), True) 'CStr(Me.Mes.SelectionRange.Start))
+            Me.Close()
         End If
     End Sub
     Private Sub TableLayoutPanel5_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles TableLayoutPanel5.Paint

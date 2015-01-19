@@ -6,6 +6,7 @@ Imports System.Globalization
 Public Class Agregar_evento
     Dim dx
     Dim insertar As String
+    Dim borrar As String
     Dim dt As DataTable
     Public Function EliminarEventos(ByVal NRC As String)
         'Dim codigo = Mid(Replace(Unidad_academica.ToUpper, " ", ""), 1, 9)
@@ -26,6 +27,8 @@ Public Class Agregar_evento
     Sub guardar_M_Evento(ByVal Fecha_inicio As String, ByVal fecha_fin As String, ByVal dia As String, ByVal nombre_curso As String, _
                                ByVal rut_docente As String, ByVal sala As String, ByVal Bloque As String, _
                                ByVal NRC As String, ByVal fecha_carga As String, ByVal modalidad_codigo As String, ByVal numero_periodo As String)
+        sala = sala.Replace("VM-", "")
+        sala = "VM-" & sala
         insertar = ""
         insertar = "insert into horarios values(@fechacarga,'" & dia & "',10,'" & NRC & _
      "','',' ','','','" & Replace(sala, " ", "") & "','DV','EVENTO', 'EVENTO','VIN','" & Bloque & "','" & rut_docente & "','" & _
@@ -41,24 +44,95 @@ Public Class Agregar_evento
             cmd.Parameters.AddWithValue("@fechafin", Convert.ToDateTime(fecha_fin))
             cmd.ExecuteNonQuery()
         Catch ex As Exception
-            MsgBox("Error Base de datos")
+            '  MsgBox("Error Base de datos")
 
         End Try
         'acaIsrael
         cnn.Close()
     End Sub
-    Function guardar_evento(ByVal dato As DataTable) As DataTable
+
+    Sub eliminarEvento(ByVal periodo As String)
+        Dim borrar As String = "delete from Horarios where tipo_actividad='EVENTO' and Tipo_Carga = 'D' and Periodo <= '" & periodo & "'"
+        Try
+            Dim ds As New DataSet
+            borrar = borrar.ToUpper
+            Dim da As New SqlDataAdapter(borrar, cnn)
+            da.Fill(ds)
+        Catch
+        End Try
+        cnn.Close()
+    End Sub
+
+  
+
+    Sub guardar_A_Evento(ByVal Fecha_inicio As String, ByVal fecha_fin As String, ByVal dia As String, ByVal nombre_curso As String, _
+                              ByVal rut_docente As String, ByVal sala As String, ByVal Bloque As String, _
+                              ByVal NRC As String, ByVal fecha_carga As String, ByVal modalidad_codigo As String, ByVal numero_periodo As String)
+
+
+        insertar = ""
+        insertar = "insert into horarios values(@fechacarga,'" & dia & "',10,'" & NRC & _
+     "','',' ','','','VM-" & Replace(sala, " ", "") & "','DV','EVENTO', 'EVENTO','VIN','" & Bloque & "','" & rut_docente & "','" & _
+     Replace(modalidad_codigo, " ", "") & "',' ',@fechainicio, @fechafin,'" & _
+     nombre_curso & "','D','',' '," & numero_periodo & ", 'EVENTO')"
+
+        Try
+            conectado()
+            cmd = New SqlCommand(insertar, cnn)
+            cmd.Parameters.AddWithValue("@fechacarga", Convert.ToDateTime(fecha_carga))
+            cmd.Parameters.AddWithValue("@fechainicio", Convert.ToDateTime(Fecha_inicio))
+            cmd.Parameters.AddWithValue("@fechafin", Convert.ToDateTime(fecha_fin))
+            cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox("Error Base de datos")
+        End Try
+        cnn.Close()
+    End Sub
+
+    Function recorrer(ByVal dia As Integer, ByVal fecha As String) As DataTable
+        Dim consulta As String = "select l.nrc, l.dia,l.tipo_actividad,l.fecha_ini,l.fecha_fin,l.bloque_codigo,l.sala,s.Ubicacion" & _
+                                  " from Liberar_sala l,Salas s" & _
+                                  " where l.sala = s.sala_codigo" & _
+                                  " and l.dia='" & dia & "'" & _
+                                  " and @fecha_inicio between l.fecha_ini and l.fecha_fin"
+
+
+        Dim cmd As New SqlCommand
+        Dim dt As New DataTable
+        conectado()
+        Try
+            'cnn.Open()
+            cmd = New SqlCommand(consulta.ToUpper)
+            cmd.Parameters.AddWithValue("@fecha_inicio", Convert.ToDateTime(fecha))
+            cmd.CommandType = CommandType.Text
+            cmd.Connection = cnn
+
+            If cmd.ExecuteNonQuery Then
+
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+                Return dt
+            Else
+                Return Nothing
+            End If
+        Catch ex As Exception
+            'MsgBox("Error al mostrar " + ex.Message)
+            Return Nothing
+        Finally
+            desconectado()
+        End Try
+        Return dt
+    End Function
+
+    Sub guardar_evento(ByVal dato As DataTable)
         dt = dato
-        Dim stringconeccion = Mod_Coneccion.Parametros
-        Dim coneccion = Split(stringconeccion, "++")
-        Dim _nombreservidor_ = coneccion(0).ToString
-        Dim _nombreusuario_ = coneccion(1).ToString
-        Dim _pass_ = coneccion(2).ToString
+
+
         Dim cnn As New SqlConnection
-        cnn = New SqlConnection("Server=" & _nombreservidor_ & ";uid=" & _nombreusuario_ & ";pwd=" & _pass_) 'inicia coneccion
+        cnn = New SqlConnection(Mod_Coneccion.Parametros) 'inicia coneccion
         cnn.Open()
         For i = 0 To dato.Rows.Count - 1
-            insertar = ("INSERT INTO Error_Evento VALUES ('" & dt.Rows(i).Item(0).ToString & "', '" & dt.Rows(i).Item(1).ToString & "')")
+            insertar = ("INSERT INTO errores VALUES ('" & dt.Rows(i).Item(0).ToString & "', '" & dt.Rows(i).Item(1).ToString & "')")
 
             Try
                 Dim ds As New DataSet
@@ -66,11 +140,12 @@ Public Class Agregar_evento
                 Dim da As New SqlDataAdapter(insertar, cnn)
                 da.Fill(ds)
             Catch
+
             End Try
             cnn.Close()
         Next
 
-    End Function
+    End Sub
 
     Public Function BuscarExiste(ByVal bloque As String, ByVal sala As String, ByVal dias As String) As DataTable
         Dim consulta As String = "select * from horarios where bloque_codigo like '" & bloque & "' and sala_codigo = 'VM-" & sala & "' and " & dias

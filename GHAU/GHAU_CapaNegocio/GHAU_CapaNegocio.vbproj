@@ -69,6 +69,7 @@
     <Compile Include="Control_de_Datos.vb" />
     <Compile Include="EstadoBaseDatos.vb" />
     <Compile Include="Excel.vb" />
+    <Compile Include="Funciones.vb" />
     <Compile Include="Negocio.vb" />
     <Compile Include="Programas.vb" />
     <Compile Include="Validado_Rut.vb" />

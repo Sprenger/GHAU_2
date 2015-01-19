@@ -17,6 +17,8 @@
             CB_Sala.Text = datos.Rows(0).Item(8).ToString
             DTP_Inicio.Value = CDate(datos.Rows(0).Item(17).ToString)
             DTP_Termino.Value = CDate(datos.Rows(0).Item(18).ToString)
+            LBL_Bloque.Text = datos.Rows(0).Item(13).ToString
+            LBL_NRC.Text = datos.Rows(0).Item(3).ToString
 
             For i = 0 To datos.Rows.Count - 1
                 If datos.Rows(i).Item(1) = "1" Then
@@ -195,13 +197,13 @@
             Dim ingresar As New GHAU_CapaNegocio.Eventos
 
             Dim consu = ingresar.consultarExiste(LBL_Bloque.Text, CB_Sala.Text, Mid(CB_dias, 1, CB_dias.Length - 3) & ")")
-            If consu.Rows.Count > 0 Then
+            If Not consu Is Nothing Then
                 Dim result As Integer = MessageBox.Show("Hay Choque con otros horarios, " & vbNewLine & "Desea agregar de todos modos?, esto creara choque de horarios", "caption", MessageBoxButtons.YesNo)
                 If result = DialogResult.No Then
                     GoTo 3
                 ElseIf result = DialogResult.Yes Then
 
-
+4:
 
                     Dim dt_Sala As New GHAU_CapaDatos.Salas
 
@@ -260,9 +262,16 @@
 
                 End If
             Else
+                Dim eliminar As New GHAU_CapaNegocio.Eventos
+                eliminar.eliminarEvento(LBL_NRC.Text)
+
+                GoTo 4
+
 2:
             End If
+            GHAU_CapaPresenta.Form3.cargar((FormatDateTime(Form3.Mes.SelectionStart, DateFormat.LongDate)), True)
             Me.Close()
+
 3:
 
 
