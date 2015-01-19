@@ -10,6 +10,8 @@ Public Class ImportarHorario
     Dim dt2 As New GHAU_CapaNegocio.ImportarHorario
     Dim _GRILLA_ As DataTable
 
+
+
     Private Sub BTNAbrir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         abrir()
 
@@ -68,6 +70,38 @@ Public Class ImportarHorario
         Me.Close()
     End Sub
 
+
+    'Sub opt(ByVal dato As DataTable)
+    '    Dim ingresar As String = ""
+
+    '    Dim dtDuplicados = dato
+    '    'elimina los campus repetidos
+    '    Dim MyView As DataView = New DataView(dtDuplicados)
+    '    Dim dtSinDuplicados As DataTable
+    '    dtSinDuplicados = MyView.ToTable(True, dtDuplicados.Columns(30).ColumnName.ToString)
+    '    'End If
+    '    Dim pasados = ""
+    '    Dim contador As String = 0
+    '    For i = 0 To dtSinDuplicados.Rows.Count - 1
+    '        'Dim a = Mid(Grilla_Ex.Rows(i).Cells(26).Value.ToString, 1, 9)
+    '        '            Dim Periodo_codigo = i
+
+    '        Dim programas_descripcion = Split(dtSinDuplicados.Rows(i).Item(0).ToString, "/")
+    '        'For j = 0 To Periodo_codigo.Length - 1
+    '        If InStr(pasados, Replace(programas_descripcion(0).ToUpper, " ", "")) = 0 Then
+    '            pasados = pasados & Replace(programas_descripcion(0).ToUpper, " ", "") & "/"
+    '            ingresar = ingresar & "insert into PROGRAMAS values('" & contador & "','" & programas_descripcion(0).ToUpper & "')" & vbNewLine
+    '            contador = contador + 1
+    '        End If
+    '        'If Periodo_codigo(0) = "" Then
+    '        'ingresar = ingresar & "insert into insert into PROGRAMAS values('UNAB00000',''"
+    '        'Else
+
+    '        'Next
+    '    Next
+    'End Sub
+
+   
     Private Sub BTN_Validar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_Validar.Click
         Try
             Dim validar As New GHAU_CapaNegocio.Excel

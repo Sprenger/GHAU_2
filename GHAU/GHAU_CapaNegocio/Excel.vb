@@ -367,14 +367,14 @@ Public Class Excel
             Dim nrc = dato.Rows(i).Item(8).ToString
 
             Dif_Horario = DateDiff(DateInterval.Day, CDate(dato.Rows(i).Item(33).ToString), CDate(dato.Rows(i).Item(34).ToString)) + 1 'marca los dias que son del nrc (fecha fin - fecha Inicio)
-            Dim arr_dias = Split(dato.Rows(i).Item(20).ToString.Trim, ".") ' crea arreglo por cada dia
+            Dim arr_dias = Split(dato.Rows(i).Item(20).ToString, "/") ' crea arreglo por cada dia
             If dato.Rows(i).Item(24).ToString = "" Then
                 dt_Choques.Rows.Add()
                 dt_Choques.Rows(dt_Choques.Rows.Count - 1).Item(0) = dato.Rows(i).Item(8).ToString
                 dt_Choques.Rows(dt_Choques.Rows.Count - 1).Item(1) = "No posee sala"
                 GoTo 2
             End If
-            Dim arr_salas = Split(Replace(dato.Rows(i).Item(24).ToString, "/", " "), " ")
+            Dim arr_salas = Split(dato.Rows(i).Item(24).ToString, "/")
 
             Dim modulo As New GHAU_CapaDatos.funciones
             'Dim Bloque=modulo.modularizacion(
@@ -382,7 +382,7 @@ Public Class Excel
 
             For j = 0 + difIinicios To difIinicios + Dif_Horario ' recorre fecha
 
-                For d = 1 To arr_dias.Length - 1
+                For d = 0 To arr_dias.Length - 1
                     Temp_arr_dias = Split(arr_dias(d).Trim, " ")
                     If Replace((arr_dias(d).Trim), " ", "") = "" Then
                         GoTo 6
@@ -396,10 +396,6 @@ Public Class Excel
                         temp_sala_dia = d
 5:
                         Dim kk = arr_salas(temp_sala_dia)
-                        If kk = "EXTERNA" Then
-                            i += 1
-                            GoTo 1
-                        End If
                         result = dtSala.Select("Sala='" & kk.Trim & "'")
                     Catch ex As Exception
                         temp_sala_dia -= 1
@@ -413,25 +409,25 @@ Public Class Excel
                         i += 1
                         GoTo 1 'salas no existen
                     End Try
-                    'If arr_dias(0).ToUpper = "." & Replace(Mid((CDate(dato.Rows(i).Item(33).ToString).Date.AddDays(1)).ToString("dddd MM YY").ToUpper, 1, 2), "á", "a").ToUpper Then
+                    If arr_dias(0).ToUpper = "." & Replace(Mid((CDate(dato.Rows(i).Item(33).ToString).Date.AddDays(1)).ToString("dddd MM YY").ToUpper, 1, 2), "á", "a").ToUpper Then
 
-                    For b = 0 To 19
-                        If bloque(b) = "1" Then
-                            If arr_cubo(j, rowIndex + 1, b) Then
+                        For b = 0 To 19
+                            If bloque(b) = "1" Then
+                                If arr_cubo(j, rowIndex + 1, b) Then
 
-                                dt_Choques.Rows.Add()
-                                dt_Choques.Rows(dt_Choques.Rows.Count - 1).Item(0) = dato.Rows(i).Item(8).ToString
-                                dt_Choques.Rows(dt_Choques.Rows.Count - 1).Item(1) = "Choque en el modulo " & b + 1 & " Dia " & (CDate(dato.Rows(i).Item(33).ToString).Date.AddDays(1))
+                                    dt_Choques.Rows.Add()
+                                    dt_Choques.Rows(dt_Choques.Rows.Count - 1).Item(0) = dato.Rows(i).Item(8).ToString
+                                    dt_Choques.Rows(dt_Choques.Rows.Count - 1).Item(1) = "Choque en el modulo " & b + 1 & " Dia " & (CDate(dato.Rows(i).Item(33).ToString).Date.AddDays(1))
 
-                                'Temp_arr_dias
-                                i += 1
+                                    'Temp_arr_dias
+                                    i += 1
+                                End If
+                                GoTo 1
+
                             End If
-                            GoTo 1
 
-                        End If
-
-                    Next
-                    ' End If
+                        Next
+                    End If
                 Next
 6:
                 j = j + 7

@@ -1547,7 +1547,7 @@ Public Class MantenedorBD
 
 
         Catch ex As Exception
-            'MsgBox("Error al mostrar " + ex.Message)
+            MsgBox("Error al mostrar " + ex.Message)
 
         Finally
             cnn.Close()

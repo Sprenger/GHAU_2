@@ -20,9 +20,9 @@
         Label5.Enabled = True
         Label5.Location = New System.Drawing.Point(10, 101)
         Label5.Name = "Label"
-        Label5.Size = New System.Drawing.Size(190, 20)
+        Label5.Size = New System.Drawing.Size(100, 20)
         Label5.TabIndex = 42
-        Label5.Text = "Día" & "     " & "   Sala" & "     " & "                      Tipo Act."
+        Label5.Text = "Día" & "     " & "   Sala"
         Label5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Label5.Visible = True
         Me.Controls.Add(Label5)
@@ -33,9 +33,9 @@
             Label4.Enabled = True
             Label4.Location = New System.Drawing.Point(10, 121 + (25 * i))
             Label4.Name = "Label"
-            Label4.Size = New System.Drawing.Size(190, 20)
+            Label4.Size = New System.Drawing.Size(100, 20)
             Label4.TabIndex = 42
-            Label4.Text = " " & xd.conversorreves(datos.Rows(i).Item(1)) & "       " & datos.Rows(i).Item(8).ToString & "       " & datos.Rows(i).Item(11).ToString
+            Label4.Text = " " & xd.conversorreves(datos.Rows(i).Item(1)) & "       " & datos.Rows(i).Item(8).ToString
             Label4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
             Label4.Visible = True
             Me.Controls.Add(Label4)
@@ -45,9 +45,9 @@
 
             Dim CheckBox1 As New CheckBox
             CheckBox1.AutoSize = True
-            CheckBox1.Location = New System.Drawing.Point(210, 121 + (25 * i))
+            CheckBox1.Location = New System.Drawing.Point(120, 121 + (25 * i))
             CheckBox1.Name = datos.Rows(i).Item(1).ToString & " " & datos.Rows(i).Item(3).ToString & " " & datos.Rows(i).Item(11).ToString & " " & datos.Rows(i).Item(13).ToString & " " & datos.Rows(i).Item(8).ToString
-            CheckBox1.Size = New System.Drawing.Size(91, 17)
+            CheckBox1.Size = New System.Drawing.Size(81, 17)
             CheckBox1.TabIndex = 42
             CheckBox1.Text = ""
             CheckBox1.UseVisualStyleBackColor = True
@@ -59,7 +59,7 @@
         If (datos.Rows.Count - 1) = 9 Then
             Me.ClientSize = New System.Drawing.Size(417, 362 + 25)
         End If
-        End Sub
+    End Sub
 
     Private Sub liberar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles liberar.Click
         Dim dt As New GHAU_CapaNegocio.Negocio
